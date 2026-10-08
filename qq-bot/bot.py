@@ -60,6 +60,12 @@ class SubscriptionBackend:
         self.bin = cfg.get("claude_bin", "claude")
         self.model = cfg.get("model", "")
         self.timeout = cfg.get("timeout_seconds", 180)
+        self.mcp_config = cfg.get("mcp_config", "")
+        self.mcp_servers = []
+        if self.mcp_config:
+            path = (HERE / self.mcp_config).resolve()
+            self.mcp_config = str(path)
+            self.mcp_servers = list(json.loads(path.read_text(encoding="utf-8")).get("mcpServers", {}))
         self.style = style
         self.state = state
         WORKDIR.mkdir(exist_ok=True)
@@ -69,10 +75,15 @@ class SubscriptionBackend:
             self.bin, "-p", text,
             "--output-format", "json",
             "--system-prompt", self.style,
-            # 不给任何工具和 MCP：QQ 里来的消息不能在你电脑上执行命令或读文件
-            "--tools", "",
+            # 只加载 mcp_config 里写的 MCP 服务器（比如记忆库），不带别的
             "--strict-mcp-config",
         ]
+        if self.mcp_config:
+            args += ["--mcp-config", self.mcp_config]
+        # 关掉内置工具，QQ 里来的消息不能在电脑上执行命令或读文件；记忆库照常能用
+        args += ["--tools", ""]
+        if self.mcp_servers:
+            args += ["--allowedTools", *(f"mcp__{name}" for name in self.mcp_servers)]
         if self.model:
             args += ["--model", self.model]
         session_id = self.state.data["sessions"].get(key)

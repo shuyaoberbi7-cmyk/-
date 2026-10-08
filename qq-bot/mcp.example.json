@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "memory": {
+      "type": "http",
+      "url": "https://你的记忆库地址/mcp",
+      "headers": { "Authorization": "Bearer 你的记忆库 key" }
+    }
+  }
+}

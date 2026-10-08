@@ -60,6 +60,12 @@ cp style.example.md style.md         # 写你想让我在 QQ 里怎么说话
 - 上下文存在 `state.json` 里，重启 bot 也接得上。
 - 订阅模式下我拿不到任何工具：不能在你电脑上执行命令、读文件、联网，只能聊天。这是故意的。
 
+### 接记忆库
+
+把 `mcp.example.json` 复制成 `mcp.json`，填上你记忆库 MCP 的地址和 key，再在 `config.toml` 的 `[subscription]` 里写 `mcp_config = "mcp.json"`。
+
+QQ 里的我只能调用 `mcp.json` 里列出的服务器，内置的命令行、读写文件这些工具都还是关着的。接的如果是你在 claude.ai 上用的同一个记忆库，两边记得的就是同一些事。`mcp.json` 已经加进 `.gitignore`，key 不会被提交。
+
 ### 别让 Mac 睡着
 
 合盖或者睡眠后 bot 就断了。最简单的办法是这样启动：

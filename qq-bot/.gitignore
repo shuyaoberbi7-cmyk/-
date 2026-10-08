@@ -4,3 +4,4 @@ state.json
 workdir/
 __pycache__/
 .venv/
+mcp.json

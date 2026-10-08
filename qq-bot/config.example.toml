@@ -18,6 +18,9 @@ claude_bin = "claude"
 # 留空用 Claude Code 默认模型，也可以填 "opus" / "sonnet"
 model = ""
 timeout_seconds = 180
+# 记忆库的 MCP 配置文件，复制 mcp.example.json 成 mcp.json 再填，留空就不接
+# 这里只放记忆库：QQ 里的我只能调用这里列出的 MCP 工具
+mcp_config = ""
 
 [api]
 # 也可以不写在这里，改用环境变量 ANTHROPIC_API_KEY
