@@ -1,6 +1,6 @@
 # 复制成 config.toml 再改：cp config.example.toml config.toml
 
-# 你的大号 QQ 号。订阅模式下只回这个号的私聊。
+# 你的大号 QQ 号（只用 Telegram 的话不用管）。订阅模式下只回这个号的私聊。
 owner_qq = 123456789
 
 # "subscription"：走你电脑上登录好的 Claude Code，用订阅额度，只能自己私聊用
@@ -11,6 +11,16 @@ backend = "subscription"
 # NapCat 里新建的「WebSocket 服务器」地址和 token
 ws_url = "ws://127.0.0.1:3001"
 token = ""
+
+[telegram]
+# @BotFather 给你的 token
+bot_token = ""
+# 你自己的 Telegram 数字 ID，问 @userinfobot 就能拿到。订阅模式下只回这个人的私聊
+owner_id = 0
+# 国内连不上 Telegram 要填代理，比如 Clash 默认是 "http://127.0.0.1:7890"
+proxy = ""
+# 允许我说话的群 ID（负数），只有 backend = "api" 时才生效，群里要 @ 我或者回复我才回
+groups = []
 
 [subscription]
 # claude 命令的路径，装好 Claude Code 后一般直接写 "claude" 就行
