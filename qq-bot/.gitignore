@@ -1,0 +1,6 @@
+config.toml
+style.md
+state.json
+workdir/
+__pycache__/
+.venv/

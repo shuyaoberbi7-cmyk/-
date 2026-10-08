@@ -1,0 +1,2 @@
+websockets>=13
+anthropic>=0.40

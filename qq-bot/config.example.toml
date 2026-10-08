@@ -1,0 +1,30 @@
+# 复制成 config.toml 再改：cp config.example.toml config.toml
+
+# 你的大号 QQ 号。订阅模式下只回这个号的私聊。
+owner_qq = 123456789
+
+# "subscription"：走你电脑上登录好的 Claude Code，用订阅额度，只能自己私聊用
+# "api"：走 Anthropic API key，按量付费，可以开群聊
+backend = "subscription"
+
+[napcat]
+# NapCat 里新建的「WebSocket 服务器」地址和 token
+ws_url = "ws://127.0.0.1:3001"
+token = ""
+
+[subscription]
+# claude 命令的路径，装好 Claude Code 后一般直接写 "claude" 就行
+claude_bin = "claude"
+# 留空用 Claude Code 默认模型，也可以填 "opus" / "sonnet"
+model = ""
+timeout_seconds = 180
+
+[api]
+# 也可以不写在这里，改用环境变量 ANTHROPIC_API_KEY
+api_key = ""
+model = "claude-opus-5-5"
+max_tokens = 1024
+# 每个会话保留最近多少条消息作为上下文
+history_limit = 40
+# 允许我说话的群号，只有 backend = "api" 时才生效，群里要 @ 小号我才回
+groups = []
